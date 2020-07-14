@@ -19,8 +19,7 @@ jobs:
   build_openwrt:
 
     name: Build OpenWrt
-    runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    runs-on: ubuntu-18.04
 
     steps:
 
@@ -44,6 +43,7 @@ jobs:
           df -h
       - name: Update feeds
         run: |
+          sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
