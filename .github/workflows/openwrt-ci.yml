@@ -29,4 +29,5 @@ jobs:
           ref: master
 
       - name: Space cleanup
-        run: ls
+        run: |
+          ls
